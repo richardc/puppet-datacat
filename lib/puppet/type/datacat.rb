@@ -1,4 +1,5 @@
-Puppet::Type.newtype(:datacat) do
+Puppet::Type.newtype(:datacat,
+                    :parent => Puppet::Type.type(:file)) do
     newparam(:path, :namevar => true) do
     end
 
