@@ -47,8 +47,6 @@ describe 'basic tests:' do
     shell 'sudo sh -c "echo include demo3 > /etc/puppet/manifests/site.pp"'
     puppet_agent do |r|
       r.exit_code.should_not == 1
-      r.refresh
-      r.exit_code.should be_zero
     end
 
     shell('cat /tmp/demo3') do |r|
@@ -58,11 +56,9 @@ describe 'basic tests:' do
 
   it 'should do the mcollective sourceselect thing via a master' do
     shell 'sudo sh -c "echo include issue5 > /etc/puppet/manifests/site.pp"'
-    shell 'sudo service puppetmaster restart'
+    shell 'sudo service puppetmaster restart' # force master to reload site.pp
     puppet_agent(:debug => true) do |r|
       r.exit_code.should_not == 1
-      r.refresh
-      r.exit_code.should be_zero
     end
 
     shell('cat /tmp/issue5/file_from_base.txt') do |r|
