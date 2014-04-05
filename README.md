@@ -11,6 +11,7 @@ the boilerplate down into the type.
 Sample Usage
 ------------
 
+```puppet
     datacat { '/etc/nagios/objects/hostgroups.cfg':
         template => "${module_name}/hostgroups.cfg.erb",
     }
@@ -30,9 +31,10 @@ Sample Usage
             device => [ $ilo_fqdn ],
         },
     }
+```
 
 And then in your `hostgroups.cfg.erb`
-
+```erb
     # hostgroups.cfg.erb
     <% @data.keys.sort.each do |hostgroup| %>
     define hostgroup {
@@ -40,7 +42,7 @@ And then in your `hostgroups.cfg.erb`
         members <%= @data[hostgroup].sort.join(',') %>
     }
     <% end %>
-
+```
 Will produce something like:
 
 
@@ -71,7 +73,7 @@ These fragments are then rendered via an erb template specified by the
 of the related `target_resource`.
 
 Sample usage:
-
+```puppet
     datacat_collector { 'open_ports':
       template_body => '<%= @data["ports"].sort.join(",") %>',
       target_resource => File_line['open_ports'],
@@ -87,7 +89,7 @@ Sample usage:
       target => 'open_ports',
       data   => { ports => [ 22 ] },
     }
-
+```
 
 Caveats
 -------
