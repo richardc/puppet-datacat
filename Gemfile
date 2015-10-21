@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 group :development, :test do
   gem 'rake'
   gem 'puppetlabs_spec_helper', :require => false
-  gem 'rspec-system-puppet', '~>2.0'
   gem 'puppet-lint'
 end
 
@@ -13,6 +12,7 @@ group :development do
   gem 'pry-debugger'
   gem 'rb-readline'
   gem 'awesome_print'
+  gem 'rspec-system-puppet', '~>2.0'
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']
