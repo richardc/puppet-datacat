@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'rake'
+  gem 'rake', '~>10.5.0'
   gem 'puppetlabs_spec_helper', :require => false
   gem 'puppet-lint'
 end
