@@ -103,8 +103,9 @@ Caveats
 -------
 
 The template is evaluated by the agent at the point of catalog evaluation,
-this means you cannot call out to puppet parser functions as you would when
-using the usual `template()` function.
+this means you cannot reference variables from your manifests with the @ syntax
+or call out to puppet parser functions as you would when using the
+usual `template()` function.
 
 
 Copyright and License
