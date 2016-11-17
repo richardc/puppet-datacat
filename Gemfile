@@ -2,7 +2,12 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'rake'
+  if RUBY_VERSION =~ /^1.8\./
+    # Rake 11.0 removes support for ruby 1.8; pin to previous version.
+    gem 'rake', '~> 10.4.2'
+  else
+    gem 'rake'
+  end
   gem 'puppetlabs_spec_helper', :require => false
   gem 'puppet-lint'
 end
