@@ -14,7 +14,11 @@ end
 
 group :development do
   gem 'pry'
-  gem 'pry-debugger'
+  if RUBY_VERSION <= '1.9.3'
+    gem 'pry-debugger'
+  else
+    gem 'pry-byebug'
+  end
   gem 'rb-readline'
   gem 'awesome_print'
   gem 'rspec-system-puppet', '~>2.0'
