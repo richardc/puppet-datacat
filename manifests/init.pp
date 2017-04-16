@@ -35,7 +35,7 @@ define datacat(
   $show_diff               = 'UNSET'
 ) {
   if $show_diff != 'UNSET' {
-    if versioncmp($settings::puppetversion, '3.2.0') >= 0 {
+    if versioncmp($::puppetversion, '3.2.0') >= 0 {
       File { show_diff => $show_diff }
     } else {
       warning('show_diff not supported in puppet prior to 3.2, ignoring')
