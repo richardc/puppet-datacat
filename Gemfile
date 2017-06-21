@@ -12,7 +12,7 @@ group :development, :test do
   gem 'puppet-lint'
 end
 
-group :development do
+group :integration do
   gem 'test-kitchen'
   gem 'kitchen-docker'
   gem 'kitchen-inspec'
