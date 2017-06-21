@@ -99,6 +99,26 @@ datacat_fragment { 'open ssh':
 }
 ```
 
+Optional: in-catalog encryption
+---------------------
+If you have the [`binford2k/node_encrypt`](https://forge.puppetlabs.com/binford2k/node_encrypt)
+module installed, then you can transparently encrypt any data element using the
+`node_encrypt()` function. **Remember to set `show_diff => false` to keep the
+secrets from appearing in your reports!**
+
+```Puppet
+datacat { '/tmp/test':
+  template_body => "Decrypted value: <%= @data["value"] %>",
+  show_diff     => false,
+}
+datacat_fragment { 'encryption test':
+  target => '/tmp/test',
+  data   => {
+    value => node_encrypt('This string will not be included in the catalog.'),
+  },
+}
+```
+
 Caveats
 -------
 

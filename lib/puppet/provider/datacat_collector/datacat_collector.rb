@@ -9,6 +9,16 @@ Puppet::Type.type(:datacat_collector).provide(:datacat_collector) do
       r.is_a?(Puppet::Type.type(:datacat_fragment)) && ((our_names & [ r[:target] ].flatten).size > 0)
     end
 
+    # decrypt any encrypted fragments
+    if defined?(Puppet_X::Binford2k::NodeEncrypt)
+      fragments.each do |fragment|
+        fragment[:data].each do |key,value|
+          next unless Puppet_X::Binford2k::NodeEncrypt.encrypted?(value)
+          fragment[:data][key] = Puppet_X::Binford2k::NodeEncrypt.decrypt(value)
+        end
+      end
+    end
+
     # order fragments on their :order property
     fragments = fragments.sort { |a,b| a[:order] <=> b[:order] }
 

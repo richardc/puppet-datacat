@@ -1,3 +1,8 @@
+begin
+  require 'puppet_x/binford2k/node_encrypt'
+rescue LoadError
+end
+
 module Puppet_X
   module Richardc
     class Datacat
