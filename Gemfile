@@ -12,6 +12,13 @@ group :development, :test do
   gem 'puppet-lint'
 end
 
+group :development do
+  gem 'test-kitchen'
+  gem 'kitchen-docker'
+  gem 'kitchen-inspec'
+  gem 'kitchen-puppet'
+end
+
 # json/json_pure are transitive dependences of puppet.
 # They dropped support for ruby 1.8 and 1.9 in their 2.0 releases
 # https://github.com/flori/json/blob/master/CHANGES.md#2015-09-11-200
