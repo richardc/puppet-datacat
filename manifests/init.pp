@@ -57,6 +57,7 @@ define datacat(
     }
   } else {
     file { $title:
+      ensure                  => $ensure,
       path                    => $path,
       backup                  => $backup,
       checksum                => $checksum,
