@@ -12,12 +12,11 @@ group :development, :test do
   gem 'puppet-lint'
 end
 
-group :development do
-  gem 'pry'
-  gem 'pry-debugger'
-  gem 'rb-readline'
-  gem 'awesome_print'
-  gem 'rspec-system-puppet', '~>2.0'
+group :integration do
+  gem 'test-kitchen'
+  gem 'kitchen-docker'
+  gem 'kitchen-inspec'
+  gem 'kitchen-puppet'
 end
 
 # json/json_pure are transitive dependences of puppet.
