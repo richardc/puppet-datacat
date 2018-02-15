@@ -32,10 +32,13 @@ define datacat(
   $selrole                 = undef,
   $seltype                 = undef,
   $seluser                 = undef,
-  $show_diff               = 'UNSET'
+  $show_diff               = 'UNSET',
 ) {
   if $show_diff != 'UNSET' {
-    if versioncmp($settings::puppetversion, '3.2.0') >= 0 {
+    # Set this hieradata parameter when testing (rspec-puppet), otherwise rely on the default value
+    $puppetversion = lookup('datacat::puppetversion', { 'default_value' => $::settings::puppetversion })
+
+    if versioncmp($puppetversion, '3.2.0') >= 0 {
       File { show_diff => $show_diff }
     } else {
       warning('show_diff not supported in puppet prior to 3.2, ignoring')
