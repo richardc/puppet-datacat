@@ -16,15 +16,15 @@ datacat { '/etc/nagios/objects/hostgroups.cfg':
   template => "${module_name}/hostgroups.cfg.erb",
 }
 
-datacat_fragment { "${::fqdn} in device hostgroup":
+datacat_fragment { "${facts['networking']['fqdn']} in device hostgroup":
   target => '/etc/nagios/objects/hostgroups.cfg',
   data   => {
-    device => [ $::fqdn ],
+    device => [ $facts['networking']['fqdn'] ],
   },
 }
 
 # fred.dc1.notreal has an ilo fred-ilo.dc1.notreal
-$ilo_fqdn = regsubst($::fqdn, '\.', '-ilo.')
+$ilo_fqdn = regsubst($facts['networking']['fqdn'], '\.', '-ilo.')
 datacat_fragment { "${ilo_fqdn} in device hostgroup":
   target => '/etc/nagios/objects/hostgroups.cfg',
   data   => {
