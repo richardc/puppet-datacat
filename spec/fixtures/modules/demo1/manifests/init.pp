@@ -15,4 +15,3 @@ class demo1 {
     data   => { bar => 2 },
   }
 }
-

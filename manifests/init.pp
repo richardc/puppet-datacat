@@ -14,7 +14,7 @@
 #    template => 'motd/motd.erb',
 #  }
 #
-define datacat(
+define datacat (
   $ensure                  = 'file',
   $template                = undef,
   $template_body           = undef,
@@ -50,10 +50,10 @@ define datacat(
 
   if $ensure == 'absent' {
     file { $title:
-      ensure                  => $ensure,
-      path                    => $path,
-      backup                  => $backup,
-      force                   => $force,
+      ensure => $ensure,
+      path   => $path,
+      backup => $backup,
+      force  => $force,
     }
   } else {
     file { $title:

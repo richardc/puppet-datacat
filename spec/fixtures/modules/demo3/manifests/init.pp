@@ -8,7 +8,7 @@ class demo3 {
   datacat_fragment { 'foo host':
     target => '/tmp/demo3',
     data   => {
-      device => [ $host1 ],
+      device => [$host1],
     },
   }
 
@@ -16,7 +16,7 @@ class demo3 {
   datacat_fragment { 'foo ilo':
     target => '/tmp/demo3',
     data   => {
-      device => [ $ilo_fqdn ],
+      device => [$ilo_fqdn],
     },
   }
 }
