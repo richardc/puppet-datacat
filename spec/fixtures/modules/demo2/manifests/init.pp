@@ -7,12 +7,11 @@ class demo2 {
 
   datacat_fragment { 'data foo => 1, 2':
     target => '/tmp/demo2',
-    data   => { foo => [ 1, 2 ] },
+    data   => { foo => [1, 2] },
   }
 
   datacat_fragment { 'data foo => 2, 3':
     target => '/tmp/demo2',
-    data   => { foo => [ 2, 3 ] },
+    data   => { foo => [2, 3] },
   }
 }
-
